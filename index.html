@@ -48,7 +48,7 @@
             </div>
             <div class="col-lg-3 dashed-border">
                 <section>
-                    <span>10</span>
+                    <span id="remaining-guesses">10</span>
                 </section>
             </div>
         </div>
@@ -60,7 +60,7 @@
             </div>
             <div class="col-lg-3 dashed-border">
                 <section>
-                    <span>L Z Y H</span>
+                    <span id="guessed-letters">L Z Y H</span>
                 </section>
             </div>
         </div>
@@ -69,6 +69,7 @@
     <script type="text/javascript">
         console.log("and here");
         init();
+        document.onkeydown = keyPressed;
     </script>
 </body>
 </html>
