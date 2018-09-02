@@ -1,24 +1,12 @@
-// initialize the game
-        
 
-// press a key
+const wordCollection = ["Uno", "Dos 2", "tres", "cuatro", "cinco cincuenta", "seis", "siete", "ocho", "nueve", "dies"];
+const allowedLetters = "QWERTYUIOPASDFGHJKLZXCVBNM1234567890";
+const totalLettersAttempts = 10;
 
-    // reset the game
-
-    // letter asserted
-
-    // letter flail
-
-    //
-
-
-
-const wordCollection = ["Uno", "Dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "dies"];
 var currentWord = "";
-var pressedKeys = "";
-const totalLettersAttents = 10;
-var remainingLettersAttents = totalLettersAttents;
-var wins = 0
+var guessedLetters = " ";
+var remainingGuessAttempts = totalLettersAttempts;
+var wins = 0;
 
 
 function init()
@@ -31,42 +19,54 @@ function init()
     printOnScreen();
 }
 
-function resetGame()
-{
-
-}
-
 function keyPressed(input)
 {
-    pressedKeys += input.key;
-    remainingLettersAttents--;
-    printOnScreen();
-    
-    var sExpression = new RegExp("[^" + pressedKeys + "]","gi");
-    var temp = currentWord.replace(sExpression, "_");
-    if(currentWord === temp)
+    if(allowedLetters.indexOf(input.key.toUpperCase()) >= 0 && guessedLetters.indexOf(input.key.toUpperCase()) < 0 && remainingGuessAttempts > 0)
     {
-        this.wins++;
-        alert("You Win!");
+        guessedLetters += input.key.toUpperCase();
+        console.log(guessedLetters);
+        remainingGuessAttempts--;
+        printOnScreen();
+        
+        var sExpression = new RegExp("[^" + guessedLetters + "]","gi");
+        var temp = currentWord.replace(sExpression, "_");
+        if(currentWord === temp)
+        {
+            wins++;
+            alert("You Win!");
+            resetGame();
+        }
+        else if(remainingGuessAttempts <= 0)
+        {
+            alert("You lose!");
+            resetGame();
+        }
     }
-    else if(remainingLettersAttents <= 0)
-    {
-        alert("You lose!");
-    }
+}
+
+function resetGame()
+{
+    guessedLetters = " ";
+    remainingGuessAttempts = totalLettersAttempts;
+    init();
 }
 
 function printOnScreen()
 {
     // set the word on screen
     var element = document.getElementById("secret-word");
-    var sExpression = new RegExp("[^" + pressedKeys + "]","gi");
-    element.innerHTML = currentWord.replace(sExpression, "_");
+    var sExpression = new RegExp("[^" + guessedLetters + "]","gi");
+    element.innerHTML = currentWord.replace(sExpression, "_").toUpperCase();
+
+    // set the current Wins
+    var element = document.getElementById("current-wins");
+    element.innerHTML = wins;
 
     // set remaining guesses
     var element = document.getElementById("remaining-guesses");
-    element.innerHTML = remainingLettersAttents;
+    element.innerHTML = remainingGuessAttempts;
 
     // set guessed letters
     var element = document.getElementById("guessed-letters");
-    element.innerHTML = pressedKeys.toUpperCase();
+    element.innerHTML = guessedLetters;
 }
