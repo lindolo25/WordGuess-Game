@@ -17,14 +17,14 @@
         <div class="row justify-content-center">
             <div class="col-lg-6 dashed-border">
                 <section>
-                    <h2>Press any key to get started!</h2>
+                    <h2>Can you guess the movie</h2>
                 </section>
             </div>
         </div>
         <div class="row justify-content-center">
             <div class="col-lg-6 dashed-border">
                 <section>
-                    <span id="secret-word">__m__s_s</span>
+                    <span id="secret-word">Example</span>
                 </section>
             </div>
         </div>
@@ -64,12 +64,22 @@
                 </section>
             </div>
         </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-6 dashed-border">
+                <audio id="player" controls autoplay>
+                    <source id="oggSource" src="media/007.ogg" type="audio/ogg">
+                    Your browser does not support the audio tag.
+                </audio>
+            </div>
+        </div>
     </article>    
     
     <script type="text/javascript">
-        console.log("and here");
-        init();
+        
+        console.log("Here the game start.");
         document.onkeydown = keyPressed;
+        init();
+
     </script>
 </body>
 </html>
