@@ -62,8 +62,6 @@ const wordCollection = [
     }     
 ];
 
-
-
 const allowedLetters = "QWERTYUIOPASDFGHJKLZXCVBNM1234567890";
 const totalLettersAttempts = 10;
 
