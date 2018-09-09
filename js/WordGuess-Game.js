@@ -76,14 +76,15 @@ function init()
 {
     // choose a ramdom Word
     var rand =  nonRepeatRandom(wordCollection.length);
-    if(rand === undefined) {
+    if(rand === undefined)
+    {
         gameOver();
         return;
     }
     currentWord = wordCollection[rand].title;
-    console.log(currentWord);
+    //console.log(currentWord);
 
-    // set the track on the audio object
+    // set the track into the audio object
     var a = document.getElementById("oggSource");
     a.setAttribute("src", wordCollection[rand].audioSource);
     
@@ -134,20 +135,16 @@ function gameOver()
 
 function printOnScreen()
 {
-    // set the word on screen
     var element = document.getElementById("secret-word");
     var sExpression = new RegExp("[^" + guessedLetters + "]","gi");
     element.innerHTML = currentWord.replace(sExpression, "_").toUpperCase();
 
-    // set the current Wins
     var element = document.getElementById("current-wins");
     element.innerHTML = wins;
 
-    // set remaining guesses
     var element = document.getElementById("remaining-guesses");
     element.innerHTML = remainingGuessAttempts;
 
-    // set guessed letters
     var element = document.getElementById("guessed-letters");
     element.innerHTML = guessedLetters.substring(3,guessedLetters.length);
 }

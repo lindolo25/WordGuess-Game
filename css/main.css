@@ -1,22 +1,18 @@
-.container { max-width: none !important; }
+body { background-image: url("../images/footer_lodyas.png"); }
 
-body
-{
-    /*font-family: 'M PLUS Rounded 1c', sans-serif;*/
-    font-family: 'Roboto', sans-serif;
-}
-
-.dashed-border 
-{
-    /*border: gray dashed 2px;*/
-    text-align: center;
-}
 span { display: inline-block; }
 
 #secret-word 
 { 
     font-family: 'M PLUS Rounded 1c', sans-serif;
     letter-spacing: 5px;
-    font-size: 24px;
     margin: 30px 0px;
+}
+
+#player { margin-top: 30px; }
+
+.alert 
+{
+    padding: .25rem .75rem;
+    margin-bottom: .50rem;
 }
